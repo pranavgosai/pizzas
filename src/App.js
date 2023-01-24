@@ -1,31 +1,27 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Home from "./components/Home/Home";
-import Category from "./components/Category/Category";
-import SingleProduct from "./components/SingleProduct/SingleProduct";
-import Newsletter from "./components/Footer/Newsletter/Newsletter";
-import AppContext from "./utils/context";
-
+import "./App.css";
+import { Container } from "react-bootstrap";
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import TopBar from "./components/TopBar";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Policy from "./components/Policy";
+import NavBae from "./components/NavBae";
+import HomeScreen from "./screens/HomeScreen";
 
 
 function App() {
-    return <>
+  return (
     <BrowserRouter>
-    <AppContext>
-    <Header/>
-    <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:id" element={<Category/>} />
-        <Route path="/product/:id" element={<SingleProduct/>} />
-        
-    </Routes>
-     <Newsletter/>
-     <Footer/>
-     </AppContext>
+   <TopBar/>
+   <NavBae/>
+   <switch>
+    <Route path="/about" component={About} exact />
+    <Route path="/contact" component={Contact} exact />
+    <Route path="/policy" component={Policy} exact />
+    <Route path="/" component={HomeScreen} exact />
+   </switch>
     </BrowserRouter>
-
-    </>;
+  );
 }
 
 export default App;
